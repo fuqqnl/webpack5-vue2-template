@@ -12,11 +12,6 @@ const NoEmitOnErrorsPlugin = require('webpack/lib/NoEmitOnErrorsPlugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
-const assetsPath = (path) => {
-    const assetsSubDirectory =
-        process.env.NODE_ENV === 'production' ? config.build.assetsSubDirectory : config.dev.assetsSubDirectory;
-    return posix.join(assetsSubDirectory, path);
-};
 module.exports = {
     mode: isProduction ? 'production' : 'development',
     devtool: isProduction ? false : 'eval-cheap-module-source-map',
@@ -31,7 +26,7 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.vue', '.less'],
         alias: {
-            'vue': 'vue/dist/vue.esm-bundler.js',
+            vue: 'vue/dist/vue.esm.js',
             '@': resolve('src'),
         }
     },
